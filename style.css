@@ -7,7 +7,13 @@
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     /* Новый градиент: цвета бурятского неба и степи */
-    background: linear-gradient(135deg, #1a5f7a 0%, #2d8f6e 50%, #e8a735 100%);
+    
+    background-image: url('https://github.com/gajka-eva/buryat_language/raw/main/images/bajkal.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
     min-height: 100vh;
     display: flex;
     justify-content: center;
