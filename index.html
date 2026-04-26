@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Буряад хэлэн - учим бурятский язык</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Верхняя панель -->
+        <header>
+            <div class="user-info">
+                <div class="avatar">🏔️</div>
+                <div class="user-stats">
+                    <div class="username">Ученик</div>
+                    <div class="total-score">⭐ <span id="totalScore">0</span> очков</div>
+                </div>
+            </div>
+            <div class="daily-goal">
+                📅 День 1
+            </div>
+        </header>
+
+        <!-- Карта с уровнями -->
+        <div class="map-container">
+            <h2 class="map-title">🗺️ Путь к знаниям</h2>
+            <div class="map" id="map">
+                <!-- Уровни будут добавлены через JavaScript -->
+            </div>
+        </div>
+
+        <!-- Модальное окно с заданиями уровня -->
+        <div class="modal" id="levelModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Уровень 1</h2>
+                    <button class="close-btn" id="closeModalBtn">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="level-progress">
+                        <span>Прогресс уровня:</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="levelProgressFill"></div>
+                        </div>
+                        <span id="levelProgressText">0/5</span>
+                    </div>
+                    <div class="lesson-list" id="lessonList">
+                        <!-- Список уроков уровня -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно с упражнением -->
+        <div class="modal" id="exerciseModal" style="display: none;">
+            <div class="modal-content exercise-modal">
+                <div class="exercise-header">
+                    <button class="back-btn" id="backToLevelBtn">← Назад</button>
+                    <div class="exercise-score">⭐ <span id="exerciseScore">0</span></div>
+                </div>
+                <div class="exercise-body">
+                    <div class="question-card">
+                        <div class="question-word" id="exerciseQuestion">Загрузка...</div>
+                        <button class="sound-btn" id="exerciseSoundBtn">🔊 Прослушать</button>
+                    </div>
+                    <div class="options" id="exerciseOptions"></div>
+                    <div class="feedback" id="exerciseFeedback"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
