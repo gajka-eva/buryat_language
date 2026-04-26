@@ -6,20 +6,35 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Новый градиент: цвета бурятского неба и степи */
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8f6e 50%, #e8a735 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    position: relative;
+}
+
+/* Декоративный этнический узор на фоне (опционально) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
 }
 
 .container {
     max-width: 600px;
     width: 100%;
-    background: white;
+    background: linear-gradient(145deg, #fffef7 0%, #fff8e7 100%);
     border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25), 0 0 0 1px rgba(232,167,53,0.2);
     overflow: hidden;
     animation: fadeIn 0.5s ease;
 }
@@ -35,17 +50,36 @@ body {
     }
 }
 
-/* Шапка */
+/* Шапка — цвета заката над Байкалом */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #c0392b 0%, #e67e22 40%, #f39c12 100%);
     color: white;
     padding: 25px 20px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Декоративные волны (как озеро Байкал) */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, 
+        rgba(255,255,255,0.3) 0px, 
+        rgba(255,255,255,0.3) 20px,
+        transparent 20px,
+        transparent 40px);
 }
 
 header h1 {
     font-size: 28px;
     margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    letter-spacing: 1px;
 }
 
 .stats {
@@ -57,10 +91,11 @@ header h1 {
 }
 
 .score, .progress {
-    background: rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.2);
     padding: 8px 15px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    font-weight: 600;
 }
 
 /* Основной контент */
@@ -69,39 +104,45 @@ main {
 }
 
 .question-card {
-    background: #f8f9fa;
-    border-radius: 20px;
+    background: linear-gradient(145deg, #ffffff 0%, #faf5e6 100%);
+    border-radius: 24px;
     padding: 40px 20px;
     text-align: center;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid rgba(232,167,53,0.3);
 }
 
 .question-word {
     font-size: 42px;
     font-weight: bold;
-    color: #333;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a5f7a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin-bottom: 20px;
     word-break: break-word;
 }
 
 .sound-btn {
-    background: #4CAF50;
+    background: linear-gradient(135deg, #2d8f6e 0%, #1a5f7a 100%);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 50px;
+    padding: 12px 24px;
+    border-radius: 40px;
     font-size: 16px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .sound-btn:hover {
-    transform: scale(1.05);
-    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #3aaf88 0%, #2a7a9e 100%);
 }
 
-/* Варианты ответов */
+/* Варианты ответов — как хадаки (традиционные платки) */
 .options {
     display: flex;
     flex-direction: column;
@@ -110,38 +151,63 @@ main {
 }
 
 .option-btn {
-    background: white;
-    border: 2px solid #e0e0e0;
+    background: linear-gradient(145deg, #ffffff 0%, #f5f0e0 100%);
+    border: 2px solid #e8c99e;
     padding: 15px 20px;
-    border-radius: 15px;
+    border-radius: 16px;
     font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: left;
     font-weight: 500;
+    color: #2c3e50;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-btn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #e8a735, #c0392b);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .option-btn:hover {
-    background: #f0f0f0;
-    border-color: #667eea;
+    background: linear-gradient(145deg, #fff8e7 0%, #faecc9 100%);
+    border-color: #e8a735;
     transform: translateX(5px);
 }
 
+.option-btn:hover::before {
+    opacity: 1;
+}
+
 .option-btn.correct-answer {
-    background: #4CAF50;
+    background: linear-gradient(135deg, #2d8f6e 0%, #3aaf88 100%);
     color: white;
-    border-color: #4CAF50;
+    border-color: #2d8f6e;
+}
+
+.option-btn.correct-answer::before {
+    background: white;
+    opacity: 1;
 }
 
 .option-btn.wrong-answer {
-    background: #f44336;
+    background: linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
     color: white;
-    border-color: #f44336;
+    border-color: #c0392b;
 }
 
 .option-btn:disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.8;
+    transform: none;
 }
 
 /* Обратная связь */
@@ -149,19 +215,21 @@ main {
     text-align: center;
     font-size: 18px;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 20px;
     margin: 20px 0;
     font-weight: 500;
 }
 
 .feedback.correct {
-    background: #d4edda;
-    color: #155724;
+    background: linear-gradient(135deg, #d5f5e3 0%, #a9dfbf 100%);
+    color: #1e8449;
+    border-left: 4px solid #2d8f6e;
 }
 
 .feedback.wrong {
-    background: #f8d7da;
-    color: #721c24;
+    background: linear-gradient(135deg, #fadbd8 0%, #f5b7b1 100%);
+    color: #922b21;
+    border-left: 4px solid #c0392b;
 }
 
 /* Кнопка "Далее" */
@@ -170,28 +238,32 @@ main {
 }
 
 .next-btn {
-    background: #667eea;
+    background: linear-gradient(135deg, #e8a735 0%, #c0392b 100%);
     color: white;
     border: none;
-    padding: 12px 30px;
+    padding: 14px 35px;
     border-radius: 50px;
     font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .next-btn:hover {
-    background: #764ba2;
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
 }
 
 /* Подвал */
 footer {
-    background: #f8f9fa;
+    background: linear-gradient(145deg, #2c3e50 0%, #1a252f 100%);
     padding: 15px 25px;
     text-align: center;
-    color: #666;
+    color: #e8c99e;
     font-size: 14px;
+    font-weight: 500;
 }
 
 /* Адаптивность */
@@ -215,20 +287,33 @@ footer {
     }
 }
 
-/* Карта и уровни */
+/* Карта и уровни — цвета бурятской степи и сакральных мест */
 .map-container {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f4c5c 0%, #2a7f6e 50%, #d4a355 100%);
     border-radius: 30px;
     margin: 15px;
     padding: 20px;
     min-height: 500px;
+    position: relative;
+}
+
+/* Паттерн как традиционная вышивка */
+.map-container::before {
+    content: '✦';
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    font-size: 40px;
+    color: rgba(255,255,255,0.08);
+    pointer-events: none;
 }
 
 .map-title {
-    color: white;
+    color: #fdebd0;
     text-align: center;
     margin-bottom: 30px;
     font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .map {
@@ -239,7 +324,7 @@ footer {
     position: relative;
 }
 
-/* Соединительная линия */
+/* Соединительная линия — как тропа */
 .level-node {
     position: relative;
     width: 100%;
@@ -252,9 +337,9 @@ footer {
     position: absolute;
     top: -30px;
     left: 50%;
-    width: 2px;
+    width: 3px;
     height: 30px;
-    background: rgba(255,255,255,0.3);
+    background: linear-gradient(180deg, #e8a735, #f39c12);
     transform: translateX(-50%);
 }
 
@@ -262,60 +347,74 @@ footer {
     display: none;
 }
 
-/* Кружок уровня */
+/* Кружок уровня — как бурятские чётки (эрхим хүнды) */
 .level-circle {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
-    background: white;
+    background: linear-gradient(145deg, #fdebd0 0%, #f5cba7 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    border: 2px solid #e8a735;
 }
 
 .level-circle.locked {
-    background: #ccc;
+    background: linear-gradient(145deg, #95a5a6 0%, #7f8c8d 100%);
     cursor: not-allowed;
     opacity: 0.6;
+    border-color: #7f8c8d;
 }
 
 .level-circle.completed {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2d8f6e 0%, #e8a735 100%);
     color: white;
     animation: pulse 0.5s ease;
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
 }
 
 .level-circle.current {
-    border: 3px solid #ffd700;
-    transform: scale(1.1);
-    animation: glow 1s infinite;
+    border: 4px solid #f1c40f;
+    transform: scale(1.12);
+    animation: glow 1.5s infinite;
+    box-shadow: 0 0 20px rgba(241, 196, 15, 0.6);
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.08); }
     100% { transform: scale(1); }
 }
 
 @keyframes glow {
-    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(241, 196, 15, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(241, 196, 15, 0); }
 }
 
 .level-number {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
+    color: #2c3e50;
+}
+
+.level-circle.completed .level-number {
+    color: white;
 }
 
 .level-stars {
     font-size: 12px;
     margin-top: 5px;
+    color: #e8a735;
+}
+
+.level-circle.completed .level-stars {
+    color: #f1c40f;
 }
 
 /* Модальные окна */
@@ -325,21 +424,23 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.8);
+    background: rgba(44, 62, 80, 0.92);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
-    background: white;
+    background: linear-gradient(145deg, #fffef7 0%, #fff8e7 100%);
     border-radius: 30px;
     max-width: 500px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
     animation: slideIn 0.3s ease;
+    border: 1px solid #e8a735;
 }
 
 @keyframes slideIn {
@@ -358,15 +459,34 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 2px solid #e8c99e;
+    background: linear-gradient(135deg, #1a5f7a 0%, #2d8f6e 100%);
+    color: white;
+    border-radius: 30px 30px 0 0;
+}
+
+.modal-header h2 {
+    font-size: 22px;
 }
 
 .close-btn {
-    background: none;
+    background: rgba(255,255,255,0.2);
     border: none;
     font-size: 28px;
     cursor: pointer;
-    color: #999;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background: rgba(255,255,255,0.4);
+    transform: rotate(90deg);
 }
 
 .lesson-list {
@@ -374,8 +494,8 @@ footer {
 }
 
 .lesson-item {
-    background: #f8f9fa;
-    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff 0%, #faf5e6 100%);
+    border-radius: 16px;
     padding: 15px;
     margin-bottom: 10px;
     display: flex;
@@ -383,48 +503,53 @@ footer {
     align-items: center;
     cursor: pointer;
     transition: all 0.3s;
+    border: 1px solid #e8c99e;
 }
 
-.lesson-item:hover {
-    background: #e9ecef;
-    transform: translateX(5px);
+.lesson-item:hover:not(.locked) {
+    background: linear-gradient(145deg, #fff8e7 0%, #faecc9 100%);
+    transform: translateX(6px);
+    border-color: #e8a735;
 }
 
 .lesson-item.completed {
-    background: #d4edda;
-    border-left: 4px solid #28a745;
+    background: linear-gradient(135deg, #d5f5e3 0%, #a9dfbf 100%);
+    border-left: 5px solid #2d8f6e;
 }
 
 .lesson-item.locked {
     opacity: 0.5;
     cursor: not-allowed;
+    background: linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 100%);
 }
 
 .lesson-name {
     font-weight: bold;
+    color: #2c3e50;
 }
 
 .lesson-status {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .progress-bar {
-    background: #e0e0e0;
-    border-radius: 10px;
-    height: 8px;
+    background: #e8c99e;
+    border-radius: 12px;
+    height: 10px;
     overflow: hidden;
-    margin: 10px 0;
+    margin: 12px 0;
 }
 
 .progress-fill {
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: linear-gradient(90deg, #2d8f6e, #e8a735);
     height: 100%;
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
+    border-radius: 12px;
 }
 
 /* Упражнение */
 .exercise-modal {
-    background: white;
+    background: linear-gradient(145deg, #fffef7 0%, #fff8e7 100%);
 }
 
 .exercise-header {
@@ -432,7 +557,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #c0392b 0%, #e8a735 100%);
     color: white;
     border-radius: 30px 30px 0 0;
 }
@@ -441,11 +566,27 @@ footer {
     background: rgba(255,255,255,0.2);
     border: none;
     color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
+    padding: 8px 18px;
+    border-radius: 30px;
     cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    background: rgba(255,255,255,0.35);
+    transform: translateX(-3px);
 }
 
 .exercise-body {
     padding: 30px;
+}
+
+/* Дополнительные этнические акценты */
+.exercise-score {
+    background: rgba(0,0,0,0.2);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 18px;
 }
